@@ -1,0 +1,11 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg class="close" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+	<path fill-rule="nonzero"
+		d="	M8,0 A8,8 0,0,1 8,16 A8,8 0,0,1 8,0z
+
+			M8,6.5 L5,3.5 L3.5,5
+			L6.5,8 L3.5,11 L5,12.5
+			L8,9.5 L11,12.5 L12.5,11z
+			L9.5,8 L12.5,5 L11,3.5z">
+	</path>
+</svg>
