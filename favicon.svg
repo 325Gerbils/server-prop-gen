@@ -1,12 +1,15 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg class="close" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
 	<path fill="green"
-		d="M0,0V16H16V0z">
+		d="M3,0 a3,3 0,0,0 -3,3
+		v10 a3,3 0,0,0 3,3
+		h10 a3,3 0,0,0 3,-3
+		v-10 a3,3 0,0,0 -3,-3 z">
 	</path>
-	<path fill="black" fill-rule="evenodd"
-		d="M1,4m1,0h2v1h1v2h-1v-2h-2v2h1v1h1v1h1v2h-1v1h-2v-1h-1v-2h1v2h2v-2h-1v-1h-1v-1h-1v-2h1z
-			M6,4h3v1h1v2h-1v1h-2v4h-1zm1,1h2v2h-2z
-			M11,4m1,0h2v1h1v2h-1v-2h-2v6h2v-2h-1v-1h2v3h-1v1h-2v-1h-1v-6h1z">
+	<path fill="white" fill-rule="evenodd"
+		d="M1,4h4v2h-1v-1h-2v2h3v5h-4v-3h1v2h2v-3h-3z
+			M6,4h4v4h-3v4h-1zm1,1h2v2h-2z
+			M11,4h4v2h-1v-1h-2v6h2v-3h-1v-1h2v5h-4z">
 	</path>
 </svg>
 <!-- M8,0 A8,8 0,0,0 8,16 A8,8 0,0,0 8,0z -->
