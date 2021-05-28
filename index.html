@@ -1,0 +1,958 @@
+<html>
+    <head>
+        <title>Minecraft server.properties GUI</title>
+        <!-- <link rel="stylesheet" href="spg.css"/> -->
+    </head>
+    <body>
+        <form>
+            <div class="column">
+                <div id="world" class="section">
+                    <h3>World Generation</h3>
+                    <ul>
+                        <li>
+                            <label for="level-seed">
+                                <details>
+                                    <summary>Seed</summary>
+                                    <div>
+                                        <h4>The
+                                            <a href="https://minecraft.fandom.com/wiki/Seed_(level_generation)">seed</a>
+                                            from which to generate the world.</h4>
+                                        <p>A random seed is used if none is provided.</p>
+                                    </div>
+                                </details>
+                            </label><input type="text" id="level-seed"/></li>
+                        <li>
+                            <label for="level-type">
+                                <details>
+                                    <summary>Type</summary>
+                                    <div>
+                                        <h4>Determines the type of map that is generated.</h4>
+                                        <p>
+                                            <b>Default</b>
+                                            - Standard world with hills, valleys, water, etc.</p>
+                                        <p>
+                                            <b>
+                                                <a href="https://minecraft.fandom.com/wiki/Superflat" title="Superflat">Superflat</a>
+                                            </b>
+                                            - A flat world with no features, can be modified with
+                                            <b>generator-settings</b>.</p>
+                                        <p>
+                                            <b>
+                                                <a href="https://minecraft.fandom.com/wiki/Large_Biomes" title="Large Biomes">Large Biomes</a>
+                                            </b>
+                                            - Same as default but all biomes are larger.</p>
+                                        <p>
+                                            <b>
+                                                <a href="https://minecraft.fandom.com/wiki/Amplified" title="Amplified">Amplified</a>
+                                            </b>
+                                            - Same as default but world-generation height limit is increased.</p>
+                                        <p>
+                                            <b>
+                                                <a href="https://minecraft.fandom.com/wiki/Buffet" title="Buffet">Buffet</a>
+                                            </b>
+                                            - Only for 1.15 or before. Same as default unless
+                                            <b>generator-settings</b>
+                                            is set.</p>
+                                        <p>
+                                            <b>Default_1_1</b>
+                                            - Only for 1.15 or before. Same as default, but counted as a different world type.</p>
+                                        <p>
+                                            <b>
+                                                <a href="https://minecraft.fandom.com/wiki/Old_Customized" title="Old Customized">Customized</a>
+                                            </b>
+                                            - Only for 1.15 or before. After 1.13, this value is no different than default, but in 1.12 and before, it could be used to create a completely custom world.</p>
+                                    </div>
+                                </details>
+                            </label><!----><select id="level-type">
+                                <option value="default">Default</option>
+                                <option value="flat">Superflat</option>
+                                <option value="largeBiomes">Large Biomes</option>
+                                <option value="amplified">Amplified</option>
+                                <option value="buffet">Buffet (pre1.15)</option>
+                                <option value="default_1_1">Default_1_1 (pre1.15)</option>
+                                <option value="customized">Customized (pre1.15)</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="generate-structures">
+                                <details>
+                                    <summary>Structures</summary>
+                                    <div>
+                                        <h4>Generate
+                                            <a href="https://minecraft.fandom.com/wiki/Structures" title="Structures">structures</a>
+                                            (villages, etc.) when generating new chunks.</h4>
+                                        <p>
+                                            <b>Note:</b>
+                                            <i>Dungeons generate regardless.</i>
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="generate-structures"/></li>
+                        <li>
+                            <label for="max-world-size">
+                                <details>
+                                    <summary>Max size</summary>
+                                    <div>
+                                        <h4>Maximum possible size in blocks, expressed as a radius, that the
+                                            <a href="https://minecraft.fandom.com/wiki/World_border" title="World border">world border</a>
+                                            can obtain.</h4>
+                                        <p>Setting the world border bigger causes the commands to complete successfully but the actual border does not move past this block limit. Setting the max-world-size higher than the default doesn't appear to do anything.</p>
+                                        <p>Examples:</p>
+                                        <p>Setting max-world-size to 1000 allows the player to have a 2000×2000 world border.</p>
+                                        <p>Setting max-world-size to 4000 gives the player an 8000×8000 world border.</p>
+                                    </div>
+                                </details>
+                            </label><input type="number" id="max-world-size" min="0" max="29999984"/>
+                        </li>
+                        <li>
+                            <label for="generator-settings">
+                                <details>
+                                    <summary>Settings</summary>
+                                    <div>
+                                        <h4>The settings used to customize world generation.</h4>
+                                        <p>Follow
+                                            <a href="https://minecraft.fandom.com/wiki/Java_Edition_level_format#generatorOptions_tag_format" title="Java Edition level format">its format</a>
+                                            and write the corresponding JSON string. Remember to escape all
+                                            <code>:</code>
+                                            with
+                                            <code>\:</code>
+                                        </p>
+                                        <p>
+                                            <a href="https://misode.github.io/worldgen/">This site</a>
+                                            generates code which may belong here?</p>
+                                    </div>
+                                </details>
+                            </label><!----><textarea id="generator-settings"></textarea>
+                        </li>
+                    </ul>
+                </div>
+                <div id="server" class="section">
+                    <h3>Server Logistics</h3>
+                    <ul>
+                        <li>
+                            <label for="motd">
+                                <details>
+                                    <summary>MOTD</summary>
+                                    <div>
+                                        <h4>This is the message that is displayed in the server list of the client, below the name.</h4>
+                                        <p>The MOTD supports
+                                            <a href="https://minecraft.fandom.com/wiki/Formatting_codes#Use_in_server.properties_and_pack.mcmeta" title="Formatting codes">color and formatting codes</a>.</p>
+                                        <p>The MOTD supports special characters, such as "♥". However, such characters must be converted to escaped Unicode form. An online converter can be found
+                                            <a target="_self" rel="nofollow" class="external text" href="http://www.freeformatter.com/string-utilities.html#charinfo">here</a>.</p>
+                                        <p>If the MOTD is over 59 characters, the server list may report a communication error.</p>
+                                    </div>
+                                </details>
+                            </label><input type="text" id="motd"/>
+                        </li>
+                        <li>
+                            <label for="server-ip">
+                                <details>
+                                    <summary>IP address</summary>
+                                    <div>
+                                        <h4>Bind the server to a particular IP.</h4>
+                                        <p>It is strongly recommended that this be left blank. Set to blank, or the IP to listen on.
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="text" id="server-ip"/>
+                        </li>
+                        <li>
+                            <label for="server-port">
+                                <details>
+                                    <summary>Port</summary>
+                                    <div>
+                                        <h4>Listen on a particular port.</h4>
+                                        <p>This port must be
+                                            <a href="https://en.wikipedia.org/wiki/Port_forwarding" class="extiw" title="wikipedia:Port forwarding">forwarded</a>
+                                            if the server is hosted in a network using
+                                            <a href="https://en.wikipedia.org/wiki/Network_address_translation" class="extiw" title="wikipedia:Network address translation">NAT</a>
+                                            (if the player has a home router/firewall).</p>
+                                    </div>
+                                </details>
+                            </label><input type="number" id="server-port"/>
+                        </li>
+                        <li>
+                            <h4>Resource Pack</h4>
+                        </li>
+                        <li>
+                            <label for="resource-pack">
+                                <details>
+                                    <summary>Pack URI</summary>
+                                    <div>
+                                        <h4>Optional URI to a
+                                            <a href="https://minecraft.fandom.com/wiki/Resource_pack" title="Resource pack">resource pack</a>.</h4>
+                                        <p>The player may choose to use it.</p>
+                                        <p>Note that (in some versions before 1.15.2), the ":" and "=" characters need to be escaped with a backslash (\), e.g. http\://somedomain.com/somepack.zip?someparam\=somevalue
+                                        </p>
+                                        <p>The resource pack may not have a larger file size than 100 MiB (Before 1.15: 50 MiB (≈ 50.4 MB)). Note that download success or failure is logged by the client, and not by the server.
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="text" id="resource-pack"/>
+                        </li>
+                        <li>
+                            <label for="resource-pack-sha1">
+                                <details>
+                                    <summary>Pack hash</summary>
+                                    <div>
+                                        <h4>Optional SHA-1 digest of the resource pack, in lowercase hexadecimal.</h4>
+                                        <p>It is recommended to specify this, because it is used to verify the integrity of the resource pack.</p>
+                                        <p>
+                                            <b>Note:</b>
+                                            If the resource pack is any different, a yellow message "Invalid sha1 for resource-pack-sha1" appears in the console when the server starts. Due to the nature of hash functions, errors have a tiny probability of occurring, so this consequence has no effect.
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="text" id="resource-pack-sha1"/>
+                        </li>
+                        <li>
+                            <label for="resource-pack-prompt">
+                                <details>
+                                    <summary>Pack prompt</summary>
+                                    <div>
+                                        <h4>Custom prompt for required resource pack</h4>
+                                        <p>
+											Optional, adds a custom message to be shown on resource pack prompt when <code>require-resource-pack</code> is used.
+										</p>
+										<p>
+											Expects chat component syntax, can contain multiple lines.
+										</p>
+                                    </div>
+                                </details>
+                            </label><input type="text" id="resource-pack-prompt"/>
+                        </li>
+                        <li>
+                            <label for="require-resource-pack">
+                                <details>
+                                    <summary>Require pack</summary>
+                                    <div>
+                                        When this option is enabled, players will be prompted for a response and will be disconnected if they decline the required pack.
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="require-resource-pack"/>
+                        </li>
+                        <li>
+                            <h4>World file</h4>
+                        </li>
+                        <li>
+                            <label for="level-name">
+                                <details>
+                                    <summary>File name</summary>
+                                    <div>
+                                        <h4>The "level-name" value is used as the world name and its folder name.</h4>
+                                        <p>The player may also copy their saved game folder here, and change the name to the same as that folder's to load it instead.</p>
+                                        <p>Characters such as ' (apostrophe) may need to be escaped by adding a backslash before them.</p>
+                                    </div>
+                                </details>
+                            </label><input type="text" id="level-name"/></li>
+                        <li>
+                            <label for="sync-chunk-writes">
+                                <details>
+                                    <summary>Sync writes</summary>
+                                    <div>
+                                        <h4>Enables synchronous chunk writes.</h4>
+                                        <p>As I understand it, forces the whole world to save at once, rather than piecemeal. Better for integrity, terrible for speedrunning.</p>
+                                        <p>Should find where I read that and link it directly.</p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="sync-chunk-writes"/></li>
+                        <li>
+                            <h4>Performance</h4>
+                        </li>
+                        <li>
+                            <label for="network-compression-threshold">
+                                <details>
+                                    <summary>NCT</summary>
+                                    <div>
+                                        <h4>Network compression threshold</h4>
+                                        <p>By default it allows packets that are
+                                            <i>n-1</i>
+                                            bytes big to go normally, but a packet of
+                                            <i>n</i>
+                                            bytes or more gets compressed down. So, a lower number means more compression but compressing small amounts of bytes might actually end up with a larger result than what went in.
+                                        </p>
+                                        <p>
+                                            <b>-1</b>
+                                            - disable compression entirely
+                                        </p>
+                                        <p>
+                                            <b>0</b>
+                                            - compress everything
+                                        </p>
+                                        <p>
+                                            <b>Note:</b>
+                                            <i>The Ethernet spec requires that packets less than 64 bytes become padded to 64 bytes. Thus, setting a value lower than 64 may not be beneficial. It is also not recommended to exceed the MTU, typically 1500 bytes.</i>
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="number" id="network-compression-threshold"/>
+                        </li>
+                        <li>
+                            <label for="max-tick-time">
+                                <details>
+                                    <summary>Max tick</summary>
+                                    <div>
+                                        <h4>Maximum tick time</h4>
+                                        <p>The maximum number of milliseconds a single tick may take before the server watchdog stops the server with the message,
+                                            <i>A single server tick took 60.00 seconds (should be max 0.05); Considering it to be crashed, server will forcibly shutdown.</i>
+                                            Once this criterion is met, it calls System.exit(1).</p>
+                                        <p>
+                                            <b>-1</b>
+                                            - disable watchdog entirely (this disable option was added in 14w32a)
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="number" id="max-tick-time"/>
+                        </li>
+                        <li>
+                            <label for="use-native-transport">
+                                <details>
+                                    <summary>Native TP</summary>
+                                    <div>
+                                        <h4>Native transport</h4>
+                                        <p>Linux server performance improvements: optimized packet sending/receiving on Linux</p>
+                                        <p>
+                                            <b>true</b>
+                                            - Enabled. Enable Linux packet sending/receiving optimization
+                                        </p>
+                                        <p>
+                                            <b>false</b>
+                                            - Disabled. Disable Linux packet sending/receiving optimization
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="use-native-transport"/>
+                        </li>
+                        <li>
+                            <label for="enable-jmx-monitoring">
+                                <details>
+                                    <summary>JMX Monitor</summary>
+                                    <div>
+                                        <h4>JMX Monitoring</h4>
+                                        <p>Exposes an MBean with the Object name
+                                            <code>net.minecraft.server:type=Server</code>
+                                            and two attributes
+                                            <code>averageTickTime</code>
+                                            and
+                                            <code>tickTimes</code>
+                                            exposing the tick times in milliseconds.</p>
+                                        <p>In order for enabling JMX on the Java runtime you also need to add a couple of JVM flags to the startup as documented
+                                            <a target="_self" rel="nofollow" class="external text" href="https://docs.oracle.com/javase/8/docs/technotes/guides/management/agent.html">here</a>.
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="enable-jmx-monitoring"/>
+                        </li>
+                        <li>
+                            <h4>RCON</h4>
+                        </li>
+                        <li>
+                            <label for="enable-rcon">
+                                <details>
+                                    <summary>Enable RCON</summary>
+                                    <div>
+                                        <h4>Enables remote access to the server console.</h4>
+                                        <p>It's not recommended to expose RCON to the Internet, because RCON protocol transfers everything without encryption. Everything (including RCON password) communicated between the RCON server and client can be leaked to someone listening in on your connection.</p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="enable-rcon"/>
+                        </li>
+                        <li>
+                            <label for="rcon-port">
+                                <details>
+                                    <summary>RCON Port</summary>
+                                    <div>
+                                        <h4>Sets the RCON network port.</h4>
+                                    </div>
+                                </details>
+                            </label><input type="number" id="rcon-port"/>
+                        </li>
+                        <li>
+                            <label for="rcon-password">
+                                <details>
+                                    <summary>Password</summary>
+                                    <div>
+                                        <h4>Sets the password for RCON:</h4>
+                                        <p>a remote console protocol that can allow other applications to connect and interact with a
+                                            <i>Minecraft</i>
+                                            server over the internet.</p>
+                                    </div>
+                                </details>
+                            </label><input type="text" id="rcon-password"/>
+                        </li>
+                        <li>
+                            <label for="broadcast-rcon-to-ops">
+                                <details>
+                                    <summary>RCON→OPs</summary>
+                                    <div>
+                                        <h4>Broadcast to OPs</h4>
+                                        <p>Send rcon console command outputs to all online operators.</p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="broadcast-rcon-to-ops"/>
+                        </li>
+                        <li>
+                            <h4>GameSpy4</h4>
+                        </li>
+                        <li>
+                            <label for="enable-query">
+                                <details>
+                                    <summary>Enable</summary>
+                                    <div>
+                                        <h4>Enables GameSpy4 protocol server listener.</h4>
+                                        <p>Used to get information about server.</p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="enable-query"/>
+                        </li>
+                        <li>
+                            <label for="query-port">
+                                <details>
+                                    <summary>Port</summary>
+                                    <div>
+                                        <h4>Sets the port for the query server.</h4>
+                                    </div>
+                                </details>
+                            </label><input type="number" id="query-port"/>
+                        </li>
+                        <li>
+                            <h4>Other</h4>
+                        </li>
+                        <li>
+                            <label for="snooper-enabled">
+                                <details>
+                                    <summary>Snooper</summary>
+                                    <div>
+                                        <h4>Send snoop data regularly to
+                                            <a target="_self" rel="nofollow" class="external free" href="http://snoop.minecraft.net/">http://snoop.minecraft.net</a>.</h4>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="snooper-enabled"/>
+                        </li>
+                        <li>
+                            <label for="text-filtering-config">
+                                <details>
+                                    <summary>TFC</summary>
+                                    <div>
+                                        <h4>Text filtering config</h4>
+                                        <p>Undocumented property.</p>
+                                    </div>
+                                </details>
+                            </label><input type="text" id="text-filtering-config"/>
+                        </li>
+                    </ul>
+                </div>
+            </div><!----><div class="column">
+                <div id="access" class="section">
+                    <h3>Player Access</h3>
+                    <ul>
+                        <li>
+                            <label for="white-list">
+                                <details>
+                                    <summary>Whitelist</summary>
+                                    <div>
+                                        <h4>Enables a whitelist on the server.</h4>
+                                        <p>With a whitelist enabled, users not on the whitelist cannot connect. Intended for private servers, such as those for real-life friends or strangers carefully selected via an application process, for example.
+                                        </p>
+                                        <p>If enabled, the file whitelist.json is used to generate the white list.</p>
+                                        <p>
+                                            <i>
+                                                <b>Note:</b>
+                                                Ops are automatically whitelisted, and there is no need to add them to the whitelist.
+                                            </i>
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="white-list"/>
+                        </li>
+                        <li>
+                            <label for="enforce-whitelist">
+                                <details>
+                                    <summary>Auto-kick</summary>
+                                    <div>
+                                        <h4>Enforces the whitelist on the server.</h4>
+                                        <p>When this option is enabled, users who are not present on the whitelist (if it's enabled) get kicked from the server after the server reloads the whitelist file.
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="enforce-whitelist"/>
+                        </li>
+                        <li>
+                            <h4>Limits</h4>
+                        </li>
+                        <li>
+                            <label for="max-players">
+                                <details>
+                                    <summary>Max players</summary>
+                                    <div>
+                                        <h4>The maximum number of players that can play on the server at the same time.</h4>
+                                        <p>Note that more players on the server consume more resources. Note also, op player connections are not supposed to count against the max players, but ops currently cannot join a full server. However, this can be changed by going to the file called ops.json in the player's server directory, opening it, finding the op that the player wants to change, and changing the setting called bypassesPlayerLimit to true (the default is false). This means that that op does not have to wait for a player to leave in order to join. Extremely large values for this field result in the client-side user list being broken.</p>
+                                    </div>
+                                </details>
+                            </label><input type="number" id="max-players"/>
+                        </li>
+                        <li>
+                            <label for="rate-limit">
+                                <details>
+                                    <summary>Rate limit</summary>
+                                    <div>
+                                        <h4>Sets the maximum amount of packets a user can send before getting kicked.</h4>
+                                        <p>Setting to 0 disables this feature.</p>
+                                    </div>
+                                </details>
+                            </label><input type="number" id="rate-limit"/>
+                        </li>
+                        <li>
+                            <label for="player-idle-timeout">
+                                <details>
+                                    <summary>Idle timeout</summary>
+                                    <div>
+                                        <h4>Player idle timeout</h4>
+                                        <p>After a player has idled for this many minutes they get kicked.</p>
+                                    </div>
+                                </details>
+                            </label><input type="number" id="player-idle-timeout"/>
+                        </li>
+                        <li>
+                            <h4>Safeguards</h4>
+                        </li>
+                        <li>
+                            <label for="enforce-whitelist">
+                                <details>
+                                    <summary>Publish</summary>
+                                    <div>
+                                        <h4>Makes the server appear as "online" on the server list.</h4>
+                                        <p>If disabled, the server will suppress replies from clients. This means it will appear as offline, but will still accept connections.</p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="enforce-whitelist"/>
+                        </li>
+                        <li>
+                            <label for="online-mode">
+                                <details>
+                                    <summary>Authenticate</summary>
+                                    <div>
+                                        <h4>Enforce
+                                            <i>Minecraft</i>
+                                            accounts.</h4>
+                                        <p>Server checks connecting players against
+                                            <i>Minecraft</i>
+                                            account database. Set this to false only if the player's server is
+                                            <b>not</b>
+                                            connected to the Internet. Hackers with fake accounts can connect if this is set to false! If minecraft.net is down or inaccessible, no players can connect if this is set to true. Setting this variable to off purposely is called "cracking" a server, and servers that are present with online mode off are called "cracked" servers, allowing players with unlicensed copies of
+                                            <i>
+                                                <a href="https://minecraft.fandom.com/wiki/Minecraft" title="Minecraft">Minecraft</a>
+                                            </i>
+                                            to join.</p>
+                                        <p>When enabled, the server assumes it has an Internet connection and checks every connecting player.</p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="online-mode"/>
+                        </li>
+                        <li>
+                            <label for="prevent-proxy-connections">
+                                <details>
+                                    <summary>No proxy</summary>
+                                    <div>
+                                        <h4>Prevent proxy connections</h4>
+                                        <p>If the ISP/AS sent from the server is different from the one from Mojang Studios' authentication server, the player is kicked.</p>
+                                        <p>When enabled, the server prevents users from using VPNs or proxies.</p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="prevent-proxy-connections"/>
+                        </li>
+                    </ul>
+                </div>
+                <div id="rules" class="section">
+                    <h3>Rules</h3>
+                    <ul>
+                        <li>
+                            <label for="gamemode">
+                                <details>
+                                    <summary>Game mode</summary>
+                                    <div>
+                                        <h4>Sets the game mode for new players.</h4>
+                                        <p>This is applied at the time the player first joins the server. Changing this setting will not change the gamemode for existing players.</p>
+                                    </div>
+                                </details>
+                            </label><!----><select>
+                                <option value="survival">Survival</option>
+                                <option value="creative">Creative</option>
+                                <option value="adventure">Adventure</option>
+                                <option value="spectator">Spectator</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="force-gamemode">
+                                <details>
+                                    <summary>Override</summary>
+                                    <div>
+                                        <h4>Force Gamemode</h4>
+                                        <p>
+                                            <i>Disabled</i>
+                                            prevents the server from sending to the client gamemode values other than the gamemode value saved by the server during world creation even if those values are set in server.properties after world creation.
+                                        </p>
+                                        <p>
+                                            <i>Enabled</i>
+                                            forces the server to send to the client gamemode values other than the gamemode value saved by the server during world creation if those values are set in server.properties after world creation.
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="force-gamemode"/>
+                        </li>
+                        <li>
+                            <label for="difficulty">
+                                <details>
+                                    <summary>Difficulty</summary>
+                                    <div>
+                                        <h4>Defines the
+                                            <a href="https://minecraft.fandom.com/wiki/Difficulty" title="Difficulty">difficulty</a>
+                                            of the server.</h4>
+                                        <p>The difficulty determines the amount of damage dealt by mobs and the way hunger and poison affects players, along with many other factors.</p>
+                                    </div>
+                                </details>
+                            </label><!----><select id="difficulty">
+                                <option value="peaceful">Peaceful</option>
+                                <option value="easy">Easy</option>
+                                <option value="normal">Normal</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="hardcore">
+                                <details>
+                                    <summary>Hardcore</summary>
+                                    <div>
+                                        <h4>Hardcore</h4>
+                                        <p>
+                                            If set to
+                                            <b>true</b>, server difficulty is ignored and set to hard, and players are set to spectator mode when they die.
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="hardcore"/>
+                        </li>
+                        <li>
+                            <label for="hardcore">
+                                <details>
+                                    <summary>PVP</summary>
+                                    <div>
+                                        <h4>Player versus Player</h4>
+                                        <p>Players shooting themselves with arrows receive damage only if PvP is enabled.</p>
+                                        <p>When enabled, players can kill each other.</p>
+                                        <p>When disabled, players cannot kill other players. This is also known as
+                                            <b>Player versus Environment</b>
+                                            (<b>PvE</b>).</p>
+                                        <p>
+                                            <b>Note:</b>
+                                            <i>Indirect damage sources spawned by players (such as
+                                                <a href="https://minecraft.fandom.com/wiki/Lava" title="Lava">lava</a>,
+                                                <a href="https://minecraft.fandom.com/wiki/Fire" title="Fire">fire</a>,
+                                                <a href="https://minecraft.fandom.com/wiki/TNT" title="TNT">TNT</a>
+                                                and to some extent
+                                                <a href="https://minecraft.fandom.com/wiki/Water" title="Water">water</a>,
+                                                <a href="https://minecraft.fandom.com/wiki/Sand" title="Sand">sand</a>
+                                                and
+                                                <a href="https://minecraft.fandom.com/wiki/Gravel" title="Gravel">gravel</a>) still deal damage to other players.</i>
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="hardcore"/>
+                        </li>
+                        <li>
+                            <label for="spawn-protection">
+                                <details>
+                                    <summary>Spawn prot</summary>
+                                    <div>
+                                        <h4>Spawn Protection</h4>
+                                        <p>
+                                            Determines the side length of the square
+                                            <a href="https://minecraft.fandom.com/wiki/Spawn_protection" title="Spawn protection">spawn protection</a>
+                                            area as 2<i>x</i>+1. Setting this to 0 disables the spawn protection. A value of 1 protects a 3×3 square centered on the spawn point. 2 protects 5×5, 3 protects 7×7, etc.
+                                        </p>
+                                        <p>
+                                            This option is not generated on the first server start and appears when the first player joins. If there are no
+                                            <a href="https://minecraft.fandom.com/wiki/Server#Managing_and_maintaining_a_server" title="Server">ops</a>
+                                            set on the server, the spawn protection is disabled automatically as well.
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="spawn-protection"/>
+                        </li>
+                        <li>
+                            <label for="max-build-height">
+                                <details>
+                                    <summary>Max height</summary>
+                                    <div>
+                                        <h4>The maximum height allowed for building.</h4>
+                                        <p>Terrain may still naturally generate above a low height limit. 256 is the maximum possible, it also has to be a multiple of 8.</p>
+                                    </div>
+                                </details>
+                            </label><input type="number" id="max-build-height"/>
+                        </li>
+                        <li>
+                            <label for="view-distance">
+                                <details>
+                                    <summary>View distance</summary>
+                                    <div>
+                                        <h4>View distance</h4>
+                                        <p>Sets the amount of world data the server sends the client, measured in chunks in each direction of the player (radius, not diameter). It determines the server-side viewing distance.</p>
+                                        <p>
+                                            <i>10 is the default/recommended. If the player has major lag, this value is recommended to be reduced.</i>
+                                        </p>
+
+                                    </div>
+                                </details>
+                            </label><input type="number" id="view-distance"/>
+                        </li>
+                        <li>
+                            <label for="entity-broadcast-range-percentage">
+                                <details>
+                                    <summary>Entity distance</summary>
+                                    <div>
+                                        <h4>Controls how close entities need to be before being sent to clients.</h4>
+                                        <p>
+                                            Higher values means they'll be rendered from farther away, potentially causing more lag. This is expressed as a percentage of the default value. For example, setting to 50 will make it half the default distance.
+                                        </p>
+                                        <p>
+                                            This mimics the function on the client video settings (not unlike Render Distance, which the client can customize so long as it's under the server's setting).
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="number" id="entity-broadcast-range-percentage"/>
+                        </li>
+                        <li>
+                            <label for="allow-flight">
+                                <details>
+                                    <summary>Allow flight</summary>
+                                    <div>
+                                        <h4>
+                                            Allows players to use flight on the server while in Survival mode, if they have a
+                                            <a href="https://minecraft.fandom.com/wiki/Mod" class="mw-redirect" title="Mod">mod</a>
+                                            that provides flight installed.
+                                        </h4>
+                                        <p>
+                                            With allow-flight enabled,
+                                            <a href="https://minecraft.fandom.com/wiki/Griefers" class="mw-redirect" title="Griefers">griefers</a>
+                                            may become more common, because it makes their work easier. In Creative mode, this has no effect.
+                                        </p>
+                                        <p>
+                                            When disabled, players in the air for at least 5 seconds get kicked.
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="allow-flight"/>
+                        </li>
+                        <li>
+                            <label for="allow-nether">
+                                <details>
+                                    <summary>Nether</summary>
+                                    <div>
+                                        <h4>
+                                            Allows players to travel to the
+                                            <a href="https://minecraft.fandom.com/wiki/Nether" class="mw-redirect" title="Nether">Nether</a>.
+                                        </h4>
+                                        <p>
+                                            When disabled,
+                                            <a href="https://minecraft.fandom.com/wiki/Nether" class="mw-redirect" title="Nether">Nether</a>
+                                            portals do not work. When enabled, the server allows
+                                            <a href="https://minecraft.fandom.com/wiki/Portal" class="mw-disambig" title="Portal">portals</a>
+                                            to send players to the Nether.
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="allow-nether"/>
+                        </li>
+                        <li>
+                            <h4>Mob Spawning</h4>
+                        </li>
+                        <li>
+                            <label for="spawn-monsters">
+                                <details>
+                                    <summary>Monsters</summary>
+                                    <div>
+                                        <h4>Determines if monsters can spawn.</h4>
+                                        <p>
+                                            When enabled, monsters appear at night and in the dark. When disabled, no monsters.
+                                        </p>
+                                        <p>
+                                            This setting has no effect if difficulty = 0 (peaceful). If difficulty != 0, a monster can still spawn from a
+                                            <a href="https://minecraft.fandom.com/wiki/Spawner" title="Spawner">spawner</a>.
+                                        </p>
+                                        <p>
+                                            <i>If the player has major lag, it is recommended to disable this.</i>
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="spawn-monsters"/>
+                        </li>
+                        <li>
+                            <label for="spawn-animals">
+                                <details>
+                                    <summary>Animals</summary>
+                                    <div>
+                                        <h4>
+                                            Determines if
+                                            <a href="https://minecraft.fandom.com/wiki/Animal" class="mw-redirect" title="Animal">animals</a>
+                                            can spawn.
+                                        </h4>
+                                        <p>
+                                            When enabled, animals spawn as normal. When disabled, animals immediately vanish.
+                                        </p>
+                                        <p>
+                                            <i>
+                                                If the player has major lag, it is recommended to disable this.
+                                            </i>
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="spawn-animals"/>
+                        </li>
+                        <li>
+                            <label for="spawn-npcs">
+                                <details>
+                                    <summary>NPCs</summary>
+                                    <div>
+                                        <h4>Determines whether villagers can spawn.</h4>
+                                        <p>When enabled, villagers spawn. When disabled, no villagers.</p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="spawn-npcs"/>
+                        </li>
+                        <li>
+                            <h4>Admin</h4>
+                        </li>
+                        <li>
+                            <label for="enable-command-block">
+                                <details>
+                                    <summary>C'mand Blocks</summary>
+                                    <div>
+                                        <h4>Enables command blocks</h4>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="enable-command-block"/>
+                        </li>
+                        <li>
+                            <label for="function-permission-level">
+                                <details>
+                                    <summary>Function level</summary>
+                                    <div>
+                                        <h4>
+                                            Sets the default permission level for
+                                            <a href="https://minecraft.fandom.com/wiki/Function_(Java_Edition)" title="Function (Java Edition)">functions</a>.
+                                        </h4>
+                                        <p>All levels inherit abilities and commands from levels before them.</p>
+                                        <p>
+                                            <b>Bypass spawn protection</b>
+                                            is self-explanatory.</p>
+                                        <p>
+                                            <b>Enable singleplayer commands</b>
+                                            allows using all singleplayer cheats commands (except
+                                            <code>/<a href="https://minecraft.fandom.com/wiki/Commands/publish" title="Commands/publish">publish</a>
+                                            </code>, as it is not on servers; along with
+                                            <code>/<a href="https://minecraft.fandom.com/wiki/Commands/debug" title="Commands/debug">debug</a>
+                                            </code>) and using command blocks. Command blocks, along with Realms owners/operators, have the same permissions as this level.
+                                        </p>
+                                        <p>
+                                            <b>Enable multiplayer commands</b>
+                                            allows using most multiplayer-exclusive commands, including
+                                            <code>/<a href="https://minecraft.fandom.com/wiki/Commands/debug" title="Commands/debug">debug</a>
+                                            </code>, and commands that manage players (<code>/<a href="https://minecraft.fandom.com/wiki/Commands/ban" title="Commands/ban">ban</a>
+                                            </code>,
+                                            <code>/<a href="https://minecraft.fandom.com/wiki/Commands/op" title="Commands/op">op</a>
+                                            </code>, etc).
+                                        </p>
+                                        <p>
+                                            <b>Enable all commands</b>
+                                            allows using all commands, including
+                                            <code>/<a href="https://minecraft.fandom.com/wiki/Commands/stop" title="Commands/stop">stop</a>
+                                            </code>,
+                                            <code>/<a href="https://minecraft.fandom.com/wiki/Commands/save-all" class="mw-redirect" title="Commands/save-all">save-all</a>
+                                            </code>,
+                                            <code>/<a href="https://minecraft.fandom.com/wiki/Commands/save-on" class="mw-redirect" title="Commands/save-on">save-on</a>
+                                            </code>, and
+                                            <code>/<a href="https://minecraft.fandom.com/wiki/Commands/save-off" class="mw-redirect" title="Commands/save-off">save-off</a>
+                                            </code>.
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><!----><select id="function-permission-level">
+                                <option value="1">Bypass spawn protection</option>
+                                <option value="2">Enable singleplayer commands</option>
+                                <option value="3">Enable most multiplayer commands</option>
+                                <option value="4">Enable all commands</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="op-permission-level">
+                                <details>
+                                    <summary>OP level</summary>
+                                    <div>
+                                        <h4>
+                                            Sets the default permission level for ops when using
+                                            <code>/<a href="https://minecraft.fandom.com/wiki/Commands/op" title="Commands/op">op</a>
+                                            </code>.
+                                        </h4>
+                                        <p>All levels inherit abilities and commands from levels before them.</p>
+                                        <p>
+                                            <b>Bypass spawn protection</b>
+                                            is self-explanatory.</p>
+                                        <p>
+                                            <b>Enable singleplayer commands</b>
+                                            allows using all singleplayer cheats commands (except
+                                            <code>/<a href="https://minecraft.fandom.com/wiki/Commands/publish" title="Commands/publish">publish</a>
+                                            </code>, as it is not on servers; along with
+                                            <code>/<a href="https://minecraft.fandom.com/wiki/Commands/debug" title="Commands/debug">debug</a>
+                                            </code>) and using command blocks. Command blocks, along with Realms owners/operators, have the same permissions as this level.
+                                        </p>
+                                        <p>
+                                            <b>Enable multiplayer commands</b>
+                                            allows using most multiplayer-exclusive commands, including
+                                            <code>/<a href="https://minecraft.fandom.com/wiki/Commands/debug" title="Commands/debug">debug</a>
+                                            </code>, and commands that manage players (<code>/<a href="https://minecraft.fandom.com/wiki/Commands/ban" title="Commands/ban">ban</a>
+                                            </code>,
+                                            <code>/<a href="https://minecraft.fandom.com/wiki/Commands/op" title="Commands/op">op</a>
+                                            </code>, etc).
+                                        </p>
+                                        <p>
+                                            <b>Enable all commands</b>
+                                            allows using all commands, including
+                                            <code>/<a href="https://minecraft.fandom.com/wiki/Commands/stop" title="Commands/stop">stop</a>
+                                            </code>,
+                                            <code>/<a href="https://minecraft.fandom.com/wiki/Commands/save-all" class="mw-redirect" title="Commands/save-all">save-all</a>
+                                            </code>,
+                                            <code>/<a href="https://minecraft.fandom.com/wiki/Commands/save-on" class="mw-redirect" title="Commands/save-on">save-on</a>
+                                            </code>, and
+                                            <code>/<a href="https://minecraft.fandom.com/wiki/Commands/save-off" class="mw-redirect" title="Commands/save-off">save-off</a>
+                                            </code>.
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><!----><select id="op-permission-level">
+                                <option value="1">Bypass spawn protection</option>
+                                <option value="2">Enable singleplayer commands</option>
+                                <option value="3">Enable multiplayer commands</option>
+                                <option value="4">Enable all commands</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="broadcast-console-to-ops">
+                                <details>
+                                    <summary>Console→OPs</summary>
+                                    <div>
+                                        <h4>Broadcast console to OPs</h4>
+                                        <p>
+                                            Send console command outputs to all
+                                            <a href="https://minecraft.fandom.com/wiki/Server#Managing_and_maintaining_a_server" title="Server">online operators</a>.
+                                        </p>
+                                    </div>
+                                </details>
+                            </label><input type="checkbox" id="broadcast-console-to-ops"/>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+        <script src="spg.js"></script>
+    </body>
+</html>
