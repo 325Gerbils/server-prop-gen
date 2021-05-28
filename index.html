@@ -265,7 +265,7 @@
                         <li>
                             <label for="network-compression-threshold">
                                 <details>
-                                    <summary>NCT</summary>
+                                    <summary>Compression</summary>
                                     <div>
                                         <h4>Network compression threshold</h4>
                                         <p>By default it allows packets that are
@@ -293,7 +293,7 @@
                         <li>
                             <label for="max-tick-time">
                                 <details>
-                                    <summary>Max tick</summary>
+                                    <summary>Max tick time</summary>
                                     <div>
                                         <h4>Maximum tick time</h4>
                                         <p>The maximum number of milliseconds a single tick may take before the server watchdog stops the server with the message,
@@ -355,7 +355,14 @@
                                     <summary>Enable RCON</summary>
                                     <div>
                                         <h4>Enables remote access to the server console.</h4>
-                                        <p>It's not recommended to expose RCON to the Internet, because RCON protocol transfers everything without encryption. Everything (including RCON password) communicated between the RCON server and client can be leaked to someone listening in on your connection.</p>
+                                        <p>
+											<i>It's not recommended to expose RCON to the Internet, because RCON protocol transfers everything without encryption. Everything (including RCON password) communicated between the RCON server and client can be leaked to someone listening in on your connection.</i>
+										</p>
+										<p>
+											RCON is a remote console protocol that can allow other applications to connect and interact with a
+												<i>Minecraft</i>
+												server over the internet.
+										</p>
                                     </div>
                                 </details>
                             </label><input type="checkbox" id="enable-rcon"/>
@@ -375,10 +382,7 @@
                                 <details>
                                     <summary>Password</summary>
                                     <div>
-                                        <h4>Sets the password for RCON:</h4>
-                                        <p>a remote console protocol that can allow other applications to connect and interact with a
-                                            <i>Minecraft</i>
-                                            server over the internet.</p>
+                                        <h4>Sets the password for RCON.</h4>
                                     </div>
                                 </details>
                             </label><input type="text" id="rcon-password"/>
