@@ -15,7 +15,8 @@ label > details > div > p, label > details > div > ul > li {
 }
 
 form {
-	margin-right: var(--global-margin);
+	display: inline-block;
+	padding-right: var(--global-margin);
 }
 
 .column {
