@@ -539,7 +539,7 @@
                             <h4>Safeguards</h4>
                         </li>
                         <li>
-                            <label for="enforce-whitelist">
+                            <label for="enable-status">
                                 <details>
                                     <summary>Publish</summary>
                                     <div>
@@ -547,7 +547,7 @@
                                         <p>If disabled, the server will suppress replies from clients. This means it will appear as offline, but will still accept connections.</p>
                                     </div>
                                 </details>
-                            </label><input type="checkbox" id="enforce-whitelist"/>
+                            </label><input type="checkbox" id="enable-status"/>
                         </li>
                         <li>
                             <label for="online-mode">
@@ -597,7 +597,7 @@
                                         <p>This is applied at the time the player first joins the server. Changing this setting will not change the gamemode for existing players.</p>
                                     </div>
                                 </details>
-                            </label><!----><select>
+                            </label><!----><select id="gamemode">
                                 <option value="survival">Survival</option>
                                 <option value="creative">Creative</option>
                                 <option value="adventure">Adventure</option>
@@ -655,7 +655,7 @@
                             </label><input type="checkbox" id="hardcore"/>
                         </li>
                         <li>
-                            <label for="hardcore">
+                            <label for="pvp">
                                 <details>
                                     <summary>PVP</summary>
                                     <div>
@@ -679,7 +679,7 @@
                                         </p>
                                     </div>
                                 </details>
-                            </label><input type="checkbox" id="hardcore"/>
+                            </label><input type="checkbox" id="pvp"/>
                         </li>
                         <li>
                             <label for="spawn-protection">
