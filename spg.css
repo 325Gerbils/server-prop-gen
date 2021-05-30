@@ -42,7 +42,6 @@ form {
 	padding: 10px;
 	margin: var(--global-margin) 0 0 var(--global-margin);
 	color: var(--highlight);
-	/* line-height: 150%; */
 	font-family: sans-serif;
 	background-color: var(--accent-color);
 }
@@ -104,7 +103,6 @@ label {
 label > details > summary {
 	list-style-type: none;
 	display: block;
-	/* display: inline-block; */
 	height: 2.2em;
 	padding: 9px 5px;
 	margin: -2px 0;
@@ -112,7 +110,6 @@ label > details > summary {
 
 label > details > summary::before {
 	content: "";
-	border-radius: 1000px;
 	width: 24px;
 	height: 24px;
 	display: block;
