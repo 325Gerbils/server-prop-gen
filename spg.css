@@ -124,11 +124,15 @@ label > details[open] > summary::before {
 	-webkit-mask: url("close.svg");
 }
 
-#github label > details > summary::before {
+label[for=githubbutton] > details > summary::before {
 	-webkit-mask: url("github.svg");
 }
 
-#github label > details[open] > summary::before {
+label[for=spgbookmark] > details > summary::before {
+	-webkit-mask: url("spg.svg");
+}
+
+label[for=githubbutton] > details[open] > summary::before {
 	-webkit-mask: url("close.svg");
 }
 
