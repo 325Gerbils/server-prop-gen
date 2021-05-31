@@ -2,7 +2,7 @@
 <svg class="close" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
 	<path fill-rule="evenodd"
 			d="	M3,0 a3,3 0,0,0 -3,3
-			v.3 h16 v-.3
+			v1 h16 v-1
 			a3,3 0,0,0 -3,-3 z
 
 			M0,3 v10
