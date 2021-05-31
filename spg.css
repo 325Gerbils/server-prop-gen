@@ -114,26 +114,26 @@ label > details > summary::before {
     height: 16px;
     display: block;
     background-color: var(--accent-color);
-    -webkit-mask: url("info.svg");
+    -webkit-mask: url(info.svg);
     -webkit-mask-size: contain;
     position: absolute;
     margin: 0 3px 0;
 }
 
 label > details[open] > summary::before {
-	-webkit-mask: url("close.svg");
+	-webkit-mask: url(close.svg);
 }
 
 label[for=githubbutton] > details > summary::before {
-	-webkit-mask: url("github.svg");
+	-webkit-mask: url(github.svg);
 }
 
 label[for=spgbookmark] > details > summary::before {
-	-webkit-mask: url("spg.svg");
+	-webkit-mask: url(spg.svg);
 }
 
 label[for=githubbutton] > details[open] > summary::before {
-	-webkit-mask: url("close.svg");
+	-webkit-mask: url(close.svg);
 }
 
 label > details > div {
