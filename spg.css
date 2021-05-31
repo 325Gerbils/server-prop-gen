@@ -103,6 +103,7 @@ label {
 label > details > summary {
 	list-style-type: none;
 	display: block;
+	user-select: none;
 	height: 2.2em;
 	padding: 9px 5px;
 	margin: -2px 0;
