@@ -42,7 +42,6 @@ form {
 	padding: 10px;
 	margin: var(--global-margin) 0 0 var(--global-margin);
 	color: var(--highlight);
-	/* line-height: 150%; */
 	font-family: sans-serif;
 	background-color: var(--accent-color);
 }
@@ -104,7 +103,7 @@ label {
 label > details > summary {
 	list-style-type: none;
 	display: block;
-	/* display: inline-block; */
+	user-select: none;
 	height: 2.2em;
 	padding: 9px 5px;
 	margin: -2px 0;
@@ -112,27 +111,30 @@ label > details > summary {
 
 label > details > summary::before {
 	content: "";
-	border-radius: 1000px;
-	width: 24px;
-	height: 24px;
-	display: block;
-	background-color: var(--accent-color);
-	-webkit-mask: url("info.svg");
-	-webkit-mask-size: contain;
-	position: absolute;
-	margin-top: -3px;
+    width: 16px;
+    height: 16px;
+    display: block;
+    background-color: var(--accent-color);
+    -webkit-mask: url(info.svg);
+    -webkit-mask-size: contain;
+    position: absolute;
+    margin: 0 3px 0;
 }
 
 label > details[open] > summary::before {
-	-webkit-mask: url("close.svg");
+	-webkit-mask: url(close.svg);
 }
 
-#github label > details > summary::before {
-	-webkit-mask: url("github.svg");
+label[for=githubbutton] > details > summary::before {
+	-webkit-mask: url(github.svg);
 }
 
-#github label > details[open] > summary::before {
-	-webkit-mask: url("close.svg");
+label[for=spgbookmark] > details > summary::before {
+	-webkit-mask: url(spg.svg);
+}
+
+label[for=githubbutton] > details[open] > summary::before {
+	-webkit-mask: url(close.svg);
 }
 
 label > details > div {
