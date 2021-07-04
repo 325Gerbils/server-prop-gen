@@ -5,6 +5,9 @@
 	--highlight: white;
 	--global-margin: 12px;
 }
+body {
+	width: 100%;
+}
 
 h3, h4 {
 	margin-bottom: 5px;
