@@ -18,11 +18,11 @@ label > details > div > p, label > details > div > ul > li {
 }
 
 form {
-	/* display: inline-block; */
 	display: block;
 	padding-right: var(--global-margin);
 	margin: 0 auto;
 	border: 1px solid red;
+	width: 870px;
 }
 
 .column {
@@ -44,7 +44,7 @@ form {
 
 .section {
 	display: block;
-	width: 420px;
+	width: 50%;
 	border-radius: 12px;
 	padding: 10px;
 	margin: var(--global-margin) 0 0 var(--global-margin);
