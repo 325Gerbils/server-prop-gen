@@ -17,6 +17,7 @@ label > details > div > p, label > details > div > ul > li {
 form {
 	display: inline-block;
 	padding-right: var(--global-margin);
+	margin: 0 auto;
 }
 
 .column {
