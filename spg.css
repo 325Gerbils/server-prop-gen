@@ -18,12 +18,14 @@ form {
 	display: inline-block;
 	padding-right: var(--global-margin);
 	margin: 0 auto;
+	border: 1px solid red;
 }
 
 .column {
 	display: inline-block;
 	vertical-align: top;
 	padding-bottom: var(--global-margin);
+	border: 1px solid yellow;
 }
 
 #world { --accent-color: #593d29; }
